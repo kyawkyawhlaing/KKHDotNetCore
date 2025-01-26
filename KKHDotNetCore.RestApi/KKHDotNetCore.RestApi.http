@@ -1,0 +1,6 @@
+@KKHDotNetCore.RestApi_HostAddress = http://localhost:5003
+
+GET {{KKHDotNetCore.RestApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
