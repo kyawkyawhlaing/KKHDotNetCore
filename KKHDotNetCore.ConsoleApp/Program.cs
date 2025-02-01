@@ -16,7 +16,8 @@ DapperExample dapperExample = new DapperExample();
 
 EFcoreExample eFcoreExample = new EFcoreExample();
 //eFcoreExample.Read();
-eFcoreExample.Create("EFCore Title", "EFCore Author", "EFCore Content");
+//eFcoreExample.Create("EFCore Title", "EFCore Author", "EFCore Content");
 
-
-Console.ReadKey();
+string result = Utils.NumberToWords(204697935);//220
+Console.WriteLine(result);
+//Console.ReadKey();
