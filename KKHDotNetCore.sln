@@ -12,7 +12,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documents", "Documents", "{
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KKHDotNetCore.Database", "KKHDotNetCore.Database\KKHDotNetCore.Database.csproj", "{81097F02-05B2-4E99-9FB5-8019A847165B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KKHDotNetCore.RestApi", "KKHDotNetCore.RestApi\KKHDotNetCore.RestApi.csproj", "{8783315A-C5F3-44CA-B410-E0226A968120}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KKHDotNetCore.RestApi", "KKHDotNetCore.RestApi\KKHDotNetCore.RestApi.csproj", "{8783315A-C5F3-44CA-B410-E0226A968120}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KKHDotNetCore.Shared", "KKHDotNetCore.Shared\KKHDotNetCore.Shared.csproj", "{4E4188D9-81AC-4647-8661-3B1DCDAF7038}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -32,6 +34,10 @@ Global
 		{8783315A-C5F3-44CA-B410-E0226A968120}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8783315A-C5F3-44CA-B410-E0226A968120}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8783315A-C5F3-44CA-B410-E0226A968120}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4E4188D9-81AC-4647-8661-3B1DCDAF7038}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E4188D9-81AC-4647-8661-3B1DCDAF7038}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E4188D9-81AC-4647-8661-3B1DCDAF7038}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E4188D9-81AC-4647-8661-3B1DCDAF7038}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
