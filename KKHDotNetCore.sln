@@ -14,9 +14,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KKHDotNetCore.Database", "K
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KKHDotNetCore.RestApi", "KKHDotNetCore.RestApi\KKHDotNetCore.RestApi.csproj", "{8783315A-C5F3-44CA-B410-E0226A968120}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KKHDotNetCore.Shared", "KKHDotNetCore.Shared\KKHDotNetCore.Shared.csproj", "{4E4188D9-81AC-4647-8661-3B1DCDAF7038}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KKHDotNetCore.Shared", "KKHDotNetCore.Shared\KKHDotNetCore.Shared.csproj", "{4E4188D9-81AC-4647-8661-3B1DCDAF7038}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KKHDotNetCore.ConsoleApp2", "KKHDotNetCore.ConsoleApp2\KKHDotNetCore.ConsoleApp2.csproj", "{F8CE8612-266C-4542-AA19-21E23567147C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KKHDotNetCore.ConsoleApp2", "KKHDotNetCore.ConsoleApp2\KKHDotNetCore.ConsoleApp2.csproj", "{F8CE8612-266C-4542-AA19-21E23567147C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KKHDotNetCore.MvcApp", "KKHDotNetCore.MvcApp\KKHDotNetCore.MvcApp.csproj", "{B3496858-9E13-495B-B009-6F76CFDBB127}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -44,6 +46,10 @@ Global
 		{F8CE8612-266C-4542-AA19-21E23567147C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F8CE8612-266C-4542-AA19-21E23567147C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F8CE8612-266C-4542-AA19-21E23567147C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B3496858-9E13-495B-B009-6F76CFDBB127}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3496858-9E13-495B-B009-6F76CFDBB127}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3496858-9E13-495B-B009-6F76CFDBB127}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3496858-9E13-495B-B009-6F76CFDBB127}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
