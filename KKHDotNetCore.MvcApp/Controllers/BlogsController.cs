@@ -21,6 +21,7 @@ namespace KKHDotNetCore.MvcApp.Controllers
             return View("BlogList", blogLst);
         }
 
+        [HttpGet]
         [ActionName("Create")]
         public IActionResult BlogCreate()
         {
@@ -28,9 +29,13 @@ namespace KKHDotNetCore.MvcApp.Controllers
         }
 
         [HttpPost]
-        [ActionName("Save")]
-        public IActionResult BlogSave(BlogRequestModel requestModel)
+        [ActionName("Create")]
+        public IActionResult BlogCreate(BlogRequestModel requestModel)
         {
+            //if (!ModelState.IsValid)
+            //{
+            //    return View("BlogCreate", requestModel);
+            //}
             try
             {
                 _blogService.CreateBlog(requestModel);
