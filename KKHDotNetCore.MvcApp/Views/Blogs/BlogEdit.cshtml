@@ -1,0 +1,17 @@
+﻿@model BlogViewModel
+
+<form method="post" action="/Blogs/Update/@Model.BlogId">
+    <div class="mb-3">
+        <label for="title" class="form-label">Blog Title</label>
+        <input type="text" class="form-control form-control-sm" id="title" value="@Model.BlogTitle" name="BlogTitle">
+    </div>
+    <div class="mb-3">
+        <label for="author" class="form-label">Blog Author</label>
+        <input type="text" class="form-control form-control-sm" id="author" value="@Model.BlogAuthor" name="BlogAuthor">
+    </div>
+    <div class="mb-3">
+        <label for="content" class="form-label">Blog Content</label>
+        <textarea class="form-control form-control-sm" id="content" rows="3" name="BlogContent">@Model.BlogContent</textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
