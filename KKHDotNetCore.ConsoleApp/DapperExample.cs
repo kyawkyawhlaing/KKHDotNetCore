@@ -15,9 +15,9 @@ namespace KKHDotNetCore.ConsoleApp
     {
         private readonly string _connectionString = "Data Source=.;Initial Catalog=KKHDotNetCore;User ID=sa;Password=sa";
         private readonly DapperService _dapperService;
-        public DapperExample(DapperService dapperService) 
+        public DapperExample() 
         {
-            _dapperService = dapperService;
+            _dapperService = new DapperService(_connectionString);
         }
 
         public void Read()
@@ -47,16 +47,14 @@ namespace KKHDotNetCore.ConsoleApp
                                 @BlogContent,
                                 0
                             )";
-            using(IDbConnection db = new SqlConnection(_connectionString))
-            {
-                int result = db.Execute(query, new
+
+                int result = _dapperService.Execute(query, new
                 {
                     BlogTitle = title,
                     BlogAuthor = author,
                     BlogContent = content
                 });
                 Console.WriteLine(result == 1 ? "Saving successful" : "Saving failed" ); 
-            }
         }
     
         public void Edit(int id)
