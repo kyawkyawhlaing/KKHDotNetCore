@@ -32,10 +32,10 @@ namespace KKHDotNetCore.MvcApp.Controllers
         [ActionName("Create")]
         public IActionResult BlogCreate(BlogRequestModel requestModel)
         {
-            //if (!ModelState.IsValid)
-            //{
-            //    return View("BlogCreate", requestModel);
-            //}
+            if (!ModelState.IsValid)
+            {
+                return View("BlogCreate", requestModel);
+            }
             try
             {
                 _blogService.CreateBlog(requestModel);

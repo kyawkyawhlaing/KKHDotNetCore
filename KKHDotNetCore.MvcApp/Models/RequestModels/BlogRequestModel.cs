@@ -5,7 +5,7 @@ namespace KKHDotNetCore.MvcApp.Models.RequestModels
     public class BlogRequestModel
     {
         public int? BlogId { get; set; }
-        [Required(ErrorMessage = "Required")]
+        [Required]
         public string BlogTitle { get; set; }
         [Required]
         public string BlogAuthor { get; set; }
