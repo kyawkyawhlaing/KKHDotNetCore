@@ -1,5 +1,7 @@
 ﻿using KKHDotNetCore.Database.Models;
+using KKHDotNetCore.MvcApp.Models;
 using KKHDotNetCore.MvcApp.Models.RequestModels;
+using KKHDotNetCore.MvcApp.Models.ResponseModels;
 using KKHDotNetCore.MvcApp.Models.ViewModels;
 using Microsoft.EntityFrameworkCore;
 
@@ -14,35 +16,57 @@ namespace KKHDotNetCore.MvcApp.Services
             _db = db;
         }
 
-        public void CreateBlog(BlogRequestModel requestModel)
+        public Result<BlogViewModel> CreateBlog(BlogRequestModel requestModel)
         {
-            _db.TblBlogs.Add(new TblBlog
+            Result<BlogViewModel> model = new Result<BlogViewModel>();
+            try
             {
-                BlogTitle   = requestModel.BlogTitle!,
-                BlogAuthor  = requestModel.BlogAuthor!,
-                BlogContent = requestModel.BlogContent!
-            });
-            _db.SaveChanges();
+                _db.TblBlogs.Add(new TblBlog
+                {
+                    BlogTitle   = requestModel.BlogTitle!,
+                    BlogAuthor  = requestModel.BlogAuthor!,
+                    BlogContent = requestModel.BlogContent!
+                });
+                _db.SaveChanges();
+                model = Result<BlogViewModel>.Success(null);
+                goto Result;
+            }
+            catch (Exception ex)
+            {
+                model = Result<BlogViewModel>.SystemError(ex.Message);
+                goto Result;
+            }
+            Result:
+                return model;
         }
 
-        public BlogViewModel GetBlog(int blogId)
+        public Result<BlogViewModel> GetBlog(int blogId)
         {
+            Result<BlogViewModel> model = new Result<BlogViewModel>();
             var item = _db.TblBlogs.AsNoTracking().FirstOrDefault(x => x.BlogId == blogId);
             if (item is null)
             {
-                return new BlogViewModel() {};
+                model = Result<BlogViewModel>.ValidationError("Blog not found");
+                goto Result;
             }
-            return new BlogViewModel()
+            else
             {
-                BlogId      = item.BlogId,
-                BlogTitle   = item.BlogTitle,
-                BlogAuthor  = item.BlogAuthor,
-                BlogContent = item.BlogContent
-            };
+                model = Result<BlogViewModel>.Success(new BlogViewModel()
+                {
+                    BlogId = item.BlogId,
+                    BlogTitle = item.BlogTitle,
+                    BlogAuthor = item.BlogAuthor,
+                    BlogContent = item.BlogContent
+                });
+                goto Result;
+            }
+            Result:
+                return model;
         }
 
-        public List<BlogViewModel> GetBlogs()
+        public Result<List<BlogViewModel>> GetBlogs()
         {
+            Result<List<BlogViewModel>> model = new Result<List<BlogViewModel>>();
             var items = _db.TblBlogs.AsNoTracking().Select(x => new BlogViewModel
             {
                 BlogId      = x.BlogId,
@@ -50,16 +74,24 @@ namespace KKHDotNetCore.MvcApp.Services
                 BlogAuthor  = x.BlogAuthor,
                 BlogContent = x.BlogContent
             }).ToList();
-            if (items is null)
+            if(items is not null)
             {
-                Console.WriteLine("Item is null");
+                model = Result<List<BlogViewModel>>.Success(items); 
+                goto Result;
             }
-            return items!;
+            else
+            {
+                model = Result<List<BlogViewModel>>.ValidationError("Blogs not found");
+                goto Result;
+            }
+            Result:
+                return model;
         }
 
 
-        public void UpdateBlog(int id, BlogRequestModel requestModel)
+        public Result<BlogViewModel> UpdateBlog(int id, BlogRequestModel requestModel)
         {
+            Result<BlogViewModel> model = new Result<BlogViewModel>();
             var item = _db.TblBlogs.AsNoTracking().FirstOrDefault(x => x.BlogId == id)!;
             if (requestModel.BlogTitle is not null)
             {
@@ -74,15 +106,40 @@ namespace KKHDotNetCore.MvcApp.Services
                 item.BlogContent = requestModel.BlogContent;
             }
             _db.Entry(item).State = EntityState.Modified;
-            _db.SaveChanges();
+            int result = _db.SaveChanges();
+            if(result is 1)
+            {
+                model = Result<BlogViewModel>.Success();
+                goto Result;
+            }
+            else
+            {
+                model = Result<BlogViewModel>.SystemError("Fail to Update");
+                goto Result;
+            }
+            Result:
+                return model;
 
         }
 
-        public void DeleteBlog(int id)
+        public Result<BlogViewModel> DeleteBlog(int id)
         {
+            Result<BlogViewModel> model = new Result<BlogViewModel>();
             var item = _db.TblBlogs.AsNoTracking().FirstOrDefault(x => x.BlogId == id)!;
             _db.Entry(item).State = EntityState.Deleted;
-            _db.SaveChanges();
+            int result = _db.SaveChanges();
+            if (result is 1)
+            {
+                model = Result<BlogViewModel>.Success();
+                goto Result;
+            }
+            else
+            {
+                model = Result<BlogViewModel>.SystemError("Fail to delete");
+                goto Result;
+            }
+            Result:
+                return model;
         }
     }
 }

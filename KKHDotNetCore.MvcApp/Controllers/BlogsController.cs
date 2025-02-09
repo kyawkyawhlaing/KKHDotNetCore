@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace KKHDotNetCore.MvcApp.Controllers
 {
-    public class BlogsController : Controller
+    public class BlogsController : BaseController
     {
         private readonly IBlogsService _blogService;
 
