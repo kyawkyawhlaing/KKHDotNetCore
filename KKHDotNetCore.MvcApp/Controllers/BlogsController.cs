@@ -17,7 +17,7 @@ namespace KKHDotNetCore.MvcApp.Controllers
         [ActionName("Index")]
         public IActionResult BlogList()
         {
-            return View("BlogList", _blogService.GetBlogs());
+            return View("BlogList", _blogService.GetBlogs().Data);
         }
 
         [HttpGet]
