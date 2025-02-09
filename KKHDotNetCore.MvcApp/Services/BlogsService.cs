@@ -88,7 +88,6 @@ namespace KKHDotNetCore.MvcApp.Services
                 return model;
         }
 
-
         public Result<BlogViewModel> UpdateBlog(int id, BlogRequestModel requestModel)
         {
             Result<BlogViewModel> model = new Result<BlogViewModel>();

@@ -1,4 +1,4 @@
-﻿namespace KKHDotNetCore.MvcApp.Models
+﻿namespace KKHDotNetCore.MvcApp.Models.ResponseModels
 {
     public class HomeResponseModel
     {

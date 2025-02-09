@@ -6,6 +6,9 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+// use keyedservice when one interface has multiple services and to avoid ambiguous error(similar to @Qualifier in Java Spring Framework)
+builder.Services.AddKeyedScoped<ITestKeyedService, TestKeyedService1>("service1");
+builder.Services.AddKeyedScoped<ITestKeyedService, TestKeyedService2>("service2");
 builder.Services.AddScoped<IBlogsService, BlogsService>();
 builder.Services.AddDbContext<AppDbContext>(options =>
 {

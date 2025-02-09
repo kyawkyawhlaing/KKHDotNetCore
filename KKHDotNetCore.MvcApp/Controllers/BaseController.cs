@@ -5,7 +5,8 @@ namespace KKHDotNetCore.MvcApp.Controllers
 {
     public class BaseController : Controller
     {
-        public IActionResult Execute<T>(Result<T> model)
+        // for web api project
+        public async Task<IActionResult> Execute<T>(Result<T> model)
         {
             if(model.IsValidationError)
             {
