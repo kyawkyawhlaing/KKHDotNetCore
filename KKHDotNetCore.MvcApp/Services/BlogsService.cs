@@ -81,7 +81,7 @@ namespace KKHDotNetCore.MvcApp.Services
             }
             else
             {
-                model = Result<List<BlogViewModel>>.ValidationError("Blogs not found");
+                model = Result<List<BlogViewModel>>.NotFound("Blogs not found");
                 goto Result;
             }
             Result:
@@ -109,12 +109,12 @@ namespace KKHDotNetCore.MvcApp.Services
             int result = _db.SaveChanges();
             if(result is 1)
             {
-                model = Result<BlogViewModel>.Success();
+                model = Result<BlogViewModel>.Success(null, "Blog has updated successfully");
                 goto Result;
             }
             else
             {
-                model = Result<BlogViewModel>.SystemError("Fail to Update");
+                model = Result<BlogViewModel>.SystemError("Blog has Failed to Update");
                 goto Result;
             }
             Result:
@@ -130,12 +130,12 @@ namespace KKHDotNetCore.MvcApp.Services
             int result = _db.SaveChanges();
             if (result is 1)
             {
-                model = Result<BlogViewModel>.Success();
+                model = Result<BlogViewModel>.Success(null, "Blog has deleted successfully");
                 goto Result;
             }
             else
             {
-                model = Result<BlogViewModel>.SystemError("Fail to delete");
+                model = Result<BlogViewModel>.SystemError("Blog has Fail to delete");
                 goto Result;
             }
             Result:

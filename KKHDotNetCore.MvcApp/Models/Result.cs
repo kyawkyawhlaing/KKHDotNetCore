@@ -4,6 +4,7 @@
     {
         public bool IsSuccess { get; set; }
         public bool IsError { get { return !IsSuccess; } }
+        public bool IsNotFound { get { return Type == EnumRespType.NotFound; } }
         public bool IsValidationError { get { return Type == EnumRespType.ValidationError; } }
         public bool IsSystemError { get { return Type == EnumRespType.SystemError; } }
         private EnumRespType Type { get; set; }
@@ -16,6 +17,17 @@
             {
                 IsSuccess = true,
                 Type = EnumRespType.Success,
+                Data = data,
+                Message = message
+            };
+        }
+
+        public static Result<T> NotFound(string message, T? data = default)
+        {
+            return new Result<T>
+            {
+                IsSuccess = false,
+                Type = EnumRespType.NotFound,
                 Data = data,
                 Message = message
             };
@@ -47,6 +59,7 @@
     public enum EnumRespType
     {
         None,
+        NotFound,
         Success,
         ValidationError,
         SystemError
