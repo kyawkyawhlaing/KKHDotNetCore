@@ -35,8 +35,10 @@ namespace KKHDotNetCore.MvcApp.Controllers
             {
                 return View("BlogCreate", requestModel);
             }
-            _blogService.CreateBlog(requestModel);
-            TempData["IsInitial"] = false;
+            var item = _blogService.CreateBlog(requestModel);
+            TempData["IsInitial"]   = false;
+            TempData["IsSuccess"]   = item.IsSuccess;
+            TempData["Message"]     = item.Message;
 
             return RedirectToAction("Index");
         }
@@ -52,8 +54,10 @@ namespace KKHDotNetCore.MvcApp.Controllers
         public IActionResult BlogUpdate(int id, BlogRequestModel requestModel)
         {
 
-            _blogService.UpdateBlog(id, requestModel);
+            var item =_blogService.UpdateBlog(id, requestModel);
             TempData["IsInitial"] = false;
+            TempData["IsSuccess"] = item.IsSuccess;
+            TempData["Message"] = item.Message;
 
             return RedirectToAction("Index");
         }
@@ -62,9 +66,10 @@ namespace KKHDotNetCore.MvcApp.Controllers
         public IActionResult BlogDelete(int id)
         {
 
-            _blogService.DeleteBlog(id);
+            var item = _blogService.DeleteBlog(id);
             TempData["IsInitial"] = false;
-
+            TempData["IsSuccess"] = item.IsSuccess;
+            TempData["Message"] = item.Message;
             return RedirectToAction("Index");
         }
     }

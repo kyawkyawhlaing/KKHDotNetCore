@@ -28,7 +28,7 @@ namespace KKHDotNetCore.MvcApp.Services
                     BlogContent = requestModel.BlogContent!
                 });
                 _db.SaveChanges();
-                model = Result<BlogViewModel>.Success(null);
+                model = Result<BlogViewModel>.Success(null, "Blog has created successfully");
                 goto Result;
             }
             catch (Exception ex)
@@ -46,7 +46,7 @@ namespace KKHDotNetCore.MvcApp.Services
             var item = _db.TblBlogs.AsNoTracking().FirstOrDefault(x => x.BlogId == blogId);
             if (item is null)
             {
-                model = Result<BlogViewModel>.ValidationError("Blog not found");
+                model = Result<BlogViewModel>.NotFound("Blog not found");
                 goto Result;
             }
             else
