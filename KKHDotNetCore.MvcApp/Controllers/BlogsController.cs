@@ -36,17 +36,9 @@ namespace KKHDotNetCore.MvcApp.Controllers
             {
                 return View("BlogCreate", requestModel);
             }
-            try
-            {
-                _blogService.CreateBlog(requestModel);
-                TempData["IsSuccess"] = true;
-                TempData["Message"] = "New Blog is created successfully";
-            }
-            catch (Exception ex)
-            {
-                TempData["IsSuccess"] = false;
-                TempData["Message"] = "New Blog is failed to create";
-            }
+            _blogService.CreateBlog(requestModel);
+            TempData["IsInitial"] = false;
+
             return RedirectToAction("Index");
         }
 
@@ -60,17 +52,9 @@ namespace KKHDotNetCore.MvcApp.Controllers
         [ActionName("Update")]
         public IActionResult BlogUpdate(int id, BlogRequestModel requestModel)
         {
-            try
-            {
-                _blogService.UpdateBlog(id, requestModel);
-                TempData["IsSuccess"] = true;
-                TempData["Message"] = "Blog is updated successfully";
-            }
-            catch (Exception ex)
-            {
-                TempData["IsSuccess"] = false;
-                TempData["Message"] = "Updating failed";
-            }
+
+            _blogService.UpdateBlog(id, requestModel);
+            TempData["IsInitial"] = false;
 
             return RedirectToAction("Index");
         }
@@ -78,17 +62,9 @@ namespace KKHDotNetCore.MvcApp.Controllers
         [ActionName("Delete")]
         public IActionResult BlogDelete(int id)
         {
-            try
-            {
-                _blogService.DeleteBlog(id);
-                TempData["IsSuccess"] = true;
-                TempData["Message"] = "Blog is removed successfully";
-            }
-            catch(Exception ex)
-            {
-                TempData["IsSuccess"] = false;
-                TempData["Message"] = "Deleting failed";
-            }
+
+            _blogService.DeleteBlog(id);
+            TempData["IsInitial"] = false;
 
             return RedirectToAction("Index");
         }
